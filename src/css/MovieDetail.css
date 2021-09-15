@@ -1,0 +1,99 @@
+.movieDetail {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin-top: 78px;
+}
+
+.movieDetail .movieName {
+    display: flex;
+    align-items: center;
+    background-color: #444343;
+    height: 60px;
+    width: 100%;
+    color: #fff;
+    font-size: 20px;
+    padding-left: 5%;
+}
+
+.movieName span {
+    padding-left: 5px;
+    color: #fff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.movieDetail .backdrop {
+    width: 100%;
+}
+
+.movieDetail .about-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.movieDetail .images {
+    display: flex;
+    position: absolute;
+    top: 30%;
+    left: 8%;
+    width: 70rem;
+    height: 40em;
+}
+
+.images img {
+    border-radius: 30px 0 0 30px;
+}
+
+.images h5 {
+    margin: 15px 0;
+}
+
+.images .plot {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    background-color: rgb(24, 8, 8, 0.7);
+    border-radius: 0 30px 30px 0;
+    padding: 40px;
+}
+
+.images .rate {
+    display: flex;
+    margin: 20px 0;
+}
+
+.images .rate div {
+    margin: 0 20px;
+}
+
+.rate span {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.images .rating span {
+    color: #000;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 5px;
+    margin: 10px;
+}
+
+.movieDetail .budget {
+    display: flex;
+    justify-content: space-around;
+    background-color: #1C1C1C;
+    transform: translateY(-28%);
+}
+
+.movieDetail .budget span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    width: 25%;
+    background-color: #353535;
+    margin: 20px 0;
+    padding: 13px 50px;
+    border-radius: 20px;
+}

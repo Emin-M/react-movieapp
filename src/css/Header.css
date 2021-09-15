@@ -1,0 +1,94 @@
+.header-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    position: relative;
+    margin-top: 78px;
+    height: 100vh;
+    width: 100%;
+    background: url(../images/coverphoto.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.header .header-text {
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    width: 50%;
+    color: #fff;
+}
+
+.header .header-text h1 {
+    margin-bottom: 20px;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1C1C1C;
+}
+
+.search .search-content {
+    position: relative;
+    display: flex;
+    width: 90%;
+    margin: 20px 0;
+    border-radius: 50px;
+    font-size: 23px;
+    background-color: #353535;
+}
+
+.search input {
+    padding: 7px;
+    width: 90%;
+    outline: none;
+    border: none;
+    background-color: #353535;
+    color: #fff;
+}
+
+.search .fa-search {
+    font-size: 25px;
+    padding: 15px;
+    color: #fff;
+}
+
+.menu h2 {
+    color: #353535;
+    margin: 15px 50px;
+    margin-bottom: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 10px;
+}
+
+.card {
+    margin: 15px 20px;
+    width: 220px;
+    height: 330px;
+    border-radius: 20px;
+}
+
+.card img {
+    border-radius: 20px;
+    transition: .3s ease-in-out;
+}
+
+.card img:hover {
+    filter: invert(20%);
+}
+
+.card:hover {
+    cursor: pointer;
+}
