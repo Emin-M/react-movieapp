@@ -9,7 +9,7 @@ export const fetchPopular = () => async (dispatch) => {
 
 export const fetchMovies = (term) => async (dispatch) => {
   const response = await api.get(
-    `/search/movie/?api_key=5497906cc47b2e7fbb2350457bf82060&language=en-US&query=${term}&page=1`
+    `/search/movie?api_key=5497906cc47b2e7fbb2350457bf82060&language=en-US&query=${term}&page=1`
   );
   dispatch({ type: "FETCH_SEARCH", payload: response.data.results });
 };
