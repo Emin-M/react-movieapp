@@ -20,3 +20,17 @@ export const fetchMovie = (id) => async (dispatch) => {
   );
   dispatch({ type: "FETCH_MOVIE", payload: response.data });
 };
+
+export const fetchCredits = (id) => async (dispatch) => {
+  const response = await api.get(
+    `/movie/${id}/credits?api_key=5497906cc47b2e7fbb2350457bf82060`
+  );
+  dispatch({ type: "FETCH_CREDITS", payload: response.data });
+};
+
+export const fetchPerson = (id) => async (dispatch) => {
+  const response = await api.get(
+    `https://api.themoviedb.org/3/person/${id}?api_key=5497906cc47b2e7fbb2350457bf82060`
+  );
+  dispatch({ type: "FETCH_PERSON", payload: response.data });
+};

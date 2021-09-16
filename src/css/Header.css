@@ -3,6 +3,10 @@
     flex-direction: column;
 }
 
+.empty {
+    margin-top: 78px;
+}
+
 .header {
     position: relative;
     margin-top: 78px;
@@ -73,22 +77,22 @@
     margin: 0 10px;
 }
 
-.card {
+.cardd {
     margin: 15px 20px;
     width: 220px;
     height: 330px;
     border-radius: 20px;
 }
 
-.card img {
+.cardd img {
     border-radius: 20px;
     transition: .3s ease-in-out;
 }
 
-.card img:hover {
+.cardd img:hover {
     filter: invert(20%);
 }
 
-.card:hover {
+.cardd:hover {
     cursor: pointer;
 }

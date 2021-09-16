@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { fetchPopular, fetchMovies } from "../actions";
 import "../css/Header.css";
 
-const Header = ({ fetchPopular, fetchMovies }) => {
+const Header = ({ fetchPopular, fetchMovies, search }) => {
   const [term, setTerm] = useState("");
   const [debouncedTerm, setDebouncedTerm] = useState(term);
 
@@ -29,17 +29,21 @@ const Header = ({ fetchPopular, fetchMovies }) => {
   }, [debouncedTerm]);
 
   return (
-    <div className="header-content">
-      <div className="header">
-        <div className="header-text">
-          <h1>Border</h1>
-          <p>
-            The Syrian war has so far caused up to 40,000 deaths and 4.8 million
-            refugees who have fled to Libya, Turkey and Jordan. This Film is
-            based on true...
-          </p>
+    <div data-aos="fade-zoom-in" className="header-content">
+      {search[0] ? (
+        <div className="empty"></div>
+      ) : (
+        <div className="header">
+          <div className="header-text">
+            <h1>Border</h1>
+            <p>
+              The Syrian war has so far caused up to 40,000 deaths and 4.8
+              million refugees who have fled to Libya, Turkey and Jordan. This
+              Film is based on true...
+            </p>
+          </div>
         </div>
-      </div>
+      )}
       <div className="search">
         <div className="search-content">
           <i className="fas fa-search"></i>
@@ -57,4 +61,10 @@ const Header = ({ fetchPopular, fetchMovies }) => {
   );
 };
 
-export default connect(null, { fetchPopular, fetchMovies })(Header);
+const mapStateToProps = (state) => {
+  return {
+    search: state.search,
+  };
+};
+
+export default connect(mapStateToProps, { fetchPopular, fetchMovies })(Header);

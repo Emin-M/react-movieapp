@@ -8,7 +8,7 @@ const Menu = ({ popular, search }) => {
   const renderPopular = popular.map((movie) => {
     return (
       <Link key={movie.id} to={`/movie/${movie.id}`}>
-        <div className="card">
+        <div data-aos="fade-zoom-in" className="card cardd">
           <img
             className="card-image"
             src={`http://image.tmdb.org/t/p/w780/${movie.poster_path}`}
@@ -22,7 +22,7 @@ const Menu = ({ popular, search }) => {
   const renderSearch = search.map((movie) => {
     return (
       <Link to={`/movie/${movie.id}`}>
-        <div className="card" key={movie.id}>
+        <div data-aos="fade-zoom-in" className="card cardd" key={movie.id}>
           <img
             className="card-image"
             src={`http://image.tmdb.org/t/p/w780/${movie.poster_path}`}
