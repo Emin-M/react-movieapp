@@ -1,0 +1,36 @@
+.error-page {
+    margin-top: 78px;
+    height: 93vh;
+    color: #fff;
+    transform: translateY(-20px);
+}
+
+.error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 80%;
+    margin: 0 20px;
+}
+
+.error h1 {
+    color: #F27927;
+    font-size: 10rem;
+    font-weight: 900;
+    margin-top: 2rem;
+}
+
+.error h2 {
+    color: #05374F;
+    font-size: 3rem;
+    margin: 0 10rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.error h5 {
+    color: #05374F;
+    font-size: 2rem;
+    padding: 2rem;
+}
