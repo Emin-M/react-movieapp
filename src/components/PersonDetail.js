@@ -14,7 +14,7 @@ const PersonDetail = ({ fetchPerson, movie }) => {
     <div id="person">
       <div className="personName">
         <Link to="/">
-          <span>Back |</span>
+          <span>Home |</span>
         </Link>
         <span>{movie.person.name}</span>
       </div>

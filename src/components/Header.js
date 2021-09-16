@@ -8,9 +8,14 @@ const Header = ({ fetchPopular, fetchMovies, search }) => {
   const [debouncedTerm, setDebouncedTerm] = useState(term);
 
   useEffect(() => {
-    if (term === "") {
-      fetchPopular();
-    }
+    const timerId = setTimeout(() => {
+      if (term === "") {
+        fetchPopular();
+      }
+    }, 5000);
+    return () => {
+      clearTimeout(timerId);
+    };
   }, [term]);
 
   useEffect(() => {
@@ -25,6 +30,10 @@ const Header = ({ fetchPopular, fetchMovies, search }) => {
   useEffect(() => {
     if (debouncedTerm) {
       fetchMovies(debouncedTerm);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     }
   }, [debouncedTerm]);
 
@@ -47,14 +56,12 @@ const Header = ({ fetchPopular, fetchMovies, search }) => {
       <div className="search">
         <div className="search-content">
           <i className="fas fa-search"></i>
-          <form>
-            <input
-              onChange={(e) => setTerm(e.target.value)}
-              value={term}
-              type="text"
-              placeholder="Search For Movies"
-            />
-          </form>
+          <input
+            onChange={(e) => setTerm(e.target.value)}
+            value={term}
+            type="text"
+            placeholder="Search For Movies"
+          />
         </div>
       </div>
     </div>

@@ -175,6 +175,10 @@
         font-size: 8px;
     }
 
+    .txt {
+        text-align: center;
+    }
+
     .movieDetail,
     .empty,
     .header {

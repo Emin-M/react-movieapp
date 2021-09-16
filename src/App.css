@@ -11,3 +11,12 @@ nav {
 nav .navbar-brand {
     font-size: 35px;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color: #000;
+}

@@ -10,13 +10,17 @@ const MovieDetail = ({ fetchMovie, fetchCredits, movie, credits }) => {
   useEffect(() => {
     fetchMovie(id);
     fetchCredits(id);
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
   }, []);
 
   const renderMovie = (
     <div data-aos="fade-zoom-in">
       <div className="movieName">
         <Link to="/">
-          <span>Back |</span>
+          <span>Home |</span>
         </Link>
         <span>{movie.movie.title}</span>
       </div>

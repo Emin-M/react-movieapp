@@ -36,7 +36,7 @@ const Menu = ({ popular, search }) => {
   return (
     <div className="menu">
       <Header />
-      <h2>{search[0] ? "Search Result" : "Popular Movies"}</h2>
+      <h2 className="txt">{search[0] ? "Search Result" : "Popular Movies"}</h2>
       <div className="card-container">
         {search[0] ? renderSearch : renderPopular}
       </div>
