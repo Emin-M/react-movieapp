@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import Header from "./Header";
+import noimage from "../images/no-image.jfif";
 
 const Menu = ({ popular, search }) => {
   const renderPopular = popular.map((movie) => {
@@ -20,14 +21,26 @@ const Menu = ({ popular, search }) => {
   });
 
   const renderSearch = search.map((movie) => {
+    let link;
+    movie.poster_path
+      ? (link = `http://image.tmdb.org/t/p/w780/${movie.poster_path}`)
+      : (link = noimage);
+
     return (
       <Link to={`/movie/${movie.id}`}>
         <div data-aos="fade-zoom-in" className="card cardd" key={movie.id}>
-          <img
-            className="card-image"
-            src={`http://image.tmdb.org/t/p/w780/${movie.poster_path}`}
-            alt={movie.title}
-          />
+          {movie.poster_path ? (
+            <img className="card-image" src={link} alt={movie.title} />
+          ) : (
+            <div className="card" style={{ height: "100%" }}>
+              <img className="card-image-top" src={link} />
+              <div className="card-title">
+                <h4 style={{ margin: "1rem" }} className="card-text">
+                  {movie.title}
+                </h4>
+              </div>
+            </div>
+          )}
         </div>
       </Link>
     );

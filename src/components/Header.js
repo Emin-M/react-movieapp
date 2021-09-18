@@ -61,7 +61,15 @@ const Header = ({ fetchPopular, fetchMovies, search }) => {
             value={term}
             type="text"
             placeholder="Search For Movies"
+            list="searchSuggestion"
           />
+          <datalist id="searchSuggestion">
+            <option value="Avengers: End Game"></option>
+            <option value="La Casa De Papel"></option>
+            <option value="No Way Home"></option>
+            <option value="Game Of Thrones"></option>
+            <option value="5 Feet Apart"></option>
+          </datalist>
         </div>
       </div>
     </div>
