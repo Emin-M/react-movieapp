@@ -7,6 +7,7 @@ const INITIAL_STATE = {
 const MovieFetch = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case "FETCH_MOVIE":
+      state.person = [];
       return {
         ...state,
         movie: action.payload,

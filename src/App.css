@@ -12,6 +12,13 @@ nav .navbar-brand {
     font-size: 35px;
 }
 
+.text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+}
+
 ::-webkit-scrollbar {
     width: 5px;
 }

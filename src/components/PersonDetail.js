@@ -2,13 +2,20 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { fetchPerson } from "../actions";
+
 import "../css/PersonDetail.css";
+import noimage from "../images/no-image.jfif";
 
 const PersonDetail = ({ fetchPerson, movie }) => {
   const { id } = useParams();
   useEffect(() => {
     fetchPerson(id);
   }, []);
+
+  let link;
+  movie.person.profile_path
+    ? (link = `http://image.tmdb.org/t/p/w780/${movie.person.profile_path}`)
+    : (link = noimage);
 
   const renderPerson = (
     <div id="person">
@@ -22,7 +29,7 @@ const PersonDetail = ({ fetchPerson, movie }) => {
         <img
           data-aos="fade-zoom-in"
           className="card-image"
-          src={`http://image.tmdb.org/t/p/w780/${movie.person.profile_path}`}
+          src={link}
           alt={movie.person.name}
         />
         <div className="about-info">
@@ -34,8 +41,17 @@ const PersonDetail = ({ fetchPerson, movie }) => {
     </div>
   );
 
-  console.log(movie.person);
-  return <div className="personDetail">{renderPerson}</div>;
+  if (movie.person.name) {
+    return <div className="personDetail">{renderPerson}</div>;
+  } else {
+    return (
+      <div className="text-center">
+        <div className="spinner-grow" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+      </div>
+    );
+  }
 };
 
 const mapStateToProps = (state) => {

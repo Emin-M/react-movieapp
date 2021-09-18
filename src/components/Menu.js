@@ -37,9 +37,17 @@ const Menu = ({ popular, search }) => {
     <div className="menu">
       <Header />
       <h2 className="txt">{search[0] ? "Search Result" : "Popular Movies"}</h2>
-      <div className="card-container">
-        {search[0] ? renderSearch : renderPopular}
-      </div>
+      {search[0] || popular[0] ? (
+        <div className="card-container">
+          {search[0] ? renderSearch : renderPopular}
+        </div>
+      ) : (
+        <div className="text-center">
+          <div className="spinner-grow" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

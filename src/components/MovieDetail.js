@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { fetchMovie, fetchCredits } from "../actions";
 
 import "../css/MovieDetail.css";
+import noimage from "../images/no-image.jfif";
 
 const MovieDetail = ({ fetchMovie, fetchCredits, movie, credits }) => {
   const { id } = useParams();
@@ -61,14 +62,14 @@ const MovieDetail = ({ fetchMovie, fetchCredits, movie, credits }) => {
   );
 
   const renderCredits = movie.credits.map((credit) => {
+    let link;
+    credit.profile_path
+      ? (link = `http://image.tmdb.org/t/p/w780/${credit.profile_path}`)
+      : (link = noimage);
     return (
       <Link key={credit.id} to={`/person/${credit.id}`}>
         <div data-aos="fade-zoom-in" className="card card-actor">
-          <img
-            className="card-image"
-            src={`http://image.tmdb.org/t/p/w780/${credit.profile_path}`}
-            alt={credit.name}
-          />
+          <img className="card-image" src={link} alt={credit.name} />
           <div className="card-title">
             <h4 className="card-text">{credit.name}</h4>
             <p className="card-text">{credit.character}</p>
@@ -80,9 +81,25 @@ const MovieDetail = ({ fetchMovie, fetchCredits, movie, credits }) => {
 
   return (
     <div className="movieDetail">
-      <div>{renderMovie}</div>
+      {movie.movie.title ? (
+        <div>{renderMovie}</div>
+      ) : (
+        <div className="text-center">
+          <div className="spinner-grow" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+        </div>
+      )}
       <h2>Actors</h2>
-      <div className="credit-container">{renderCredits}</div>
+      {movie.credits[0] ? (
+        <div className="credit-container">{renderCredits}</div>
+      ) : (
+        <div className="text-center">
+          <div className="spinner-grow" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
