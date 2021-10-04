@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { fetchMovie, fetchCredits } from "../actions";
+import millify from "millify";
 
 import "../css/MovieDetail.css";
 import noimage from "../images/no-image.jfif";
@@ -16,6 +17,12 @@ const MovieDetail = ({ fetchMovie, fetchCredits, movie, credits }) => {
       behavior: "auto",
     });
   }, []);
+
+  const renderMinutes = (minute) => {
+    let h = Math.floor(minute / 60);
+    let m = minute % 60;
+    return `${h}h ${m}m`;
+  };
 
   const renderMovie = (
     <div data-aos="fade-zoom-in">
@@ -54,9 +61,19 @@ const MovieDetail = ({ fetchMovie, fetchCredits, movie, credits }) => {
         </div>
       </div>
       <div className="budget">
-        <span>Running Time: {movie.movie.runtime}m</span>
-        <span>Budget: ${movie.movie.budget}</span>
-        <span>Revenue: ${movie.movie.revenue}</span>
+        <span>Running Time: {renderMinutes(movie.movie.runtime)}</span>
+        <span>
+          Budget:{" "}
+          {movie.movie.budget
+            ? `${millify(`${movie.movie.budget}`)}`
+            : "No Information"}
+        </span>
+        <span>
+          Revenue:{" "}
+          {movie.movie.revenue
+            ? `${millify(`${movie.movie.revenue}`)}`
+            : "No Information"}
+        </span>
       </div>
     </div>
   );
