@@ -33,7 +33,7 @@ const Menu = ({ popular, search }) => {
             <img className="card-image" src={link} alt={movie.title} />
           ) : (
             <div className="card" style={{ height: "100%" }}>
-              <img className="card-image-top" src={link} />
+              <img className="card-image-top" alt="coverphoto" src={link} />
               <div className="card-title">
                 <h4 style={{ margin: "1rem" }} className="card-text">
                   {movie.title}

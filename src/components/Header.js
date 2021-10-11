@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { fetchPopular, fetchMovies } from "../actions";
+import cover from "../images/coverphoto.jpg";
 import "../css/Header.css";
 
-const Header = ({ fetchPopular, fetchMovies, search }) => {
+const Header = ({ fetchPopular, fetchMovies, popular, search }) => {
   const [term, setTerm] = useState("");
   const [debouncedTerm, setDebouncedTerm] = useState(term);
+  const randomCoverPhoto = Math.floor(Math.random() * 20);
 
   useEffect(() => {
     const timerId = setTimeout(() => {
@@ -43,14 +45,35 @@ const Header = ({ fetchPopular, fetchMovies, search }) => {
         <div className="empty"></div>
       ) : (
         <div className="header">
-          <div className="header-text">
-            <h1>Border</h1>
-            <p>
-              The Syrian war has so far caused up to 40,000 deaths and 4.8
-              million refugees who have fled to Libya, Turkey and Jordan. This
-              Film is based on true...
-            </p>
-          </div>
+          {popular[0] ? (
+            <React.Fragment>
+              <img
+                src={`http://image.tmdb.org/t/p/w780/${popular[randomCoverPhoto].backdrop_path}`}
+                alt="coverphoto"
+              />
+              <div className="header-text">
+                <h1>{popular[randomCoverPhoto].title}</h1>
+                <p>{popular[randomCoverPhoto].overview}</p>
+              </div>
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <img src={cover} alt="coverimage" />
+              <div className="text-center header-spinner">
+                <div className="spinner-border" role="status">
+                  <span className="visually-hidden"></span>
+                </div>
+              </div>
+              <div className="header-text">
+                <h1>Border</h1>
+                <p>
+                  The Syrian war has so far caused up to 40,000 deaths and 4.8
+                  million refugees who have fled to Libya, Turkey and Jordan.
+                  This Film is based on true...
+                </p>
+              </div>
+            </React.Fragment>
+          )}
         </div>
       )}
       <div className="search">
@@ -79,6 +102,7 @@ const Header = ({ fetchPopular, fetchMovies, search }) => {
 const mapStateToProps = (state) => {
   return {
     search: state.search,
+    popular: state.popular,
   };
 };
 
