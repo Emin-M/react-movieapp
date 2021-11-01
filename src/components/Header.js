@@ -7,7 +7,6 @@ import "../css/Header.css";
 const Header = ({ fetchPopular, fetchMovies, popular, search }) => {
   const [term, setTerm] = useState("");
   const [debouncedTerm, setDebouncedTerm] = useState(term);
-  const randomCoverPhoto = Math.floor(Math.random() * 20);
 
   useEffect(() => {
     const timerId = setTimeout(() => {
@@ -48,12 +47,12 @@ const Header = ({ fetchPopular, fetchMovies, popular, search }) => {
           {popular[0] ? (
             <React.Fragment>
               <img
-                src={`http://image.tmdb.org/t/p/w780/${popular[randomCoverPhoto].backdrop_path}`}
+                src={`http://image.tmdb.org/t/p/w780/${popular[0].backdrop_path}`}
                 alt="coverphoto"
               />
               <div className="header-text">
-                <h1>{popular[randomCoverPhoto].title}</h1>
-                <p>{popular[randomCoverPhoto].overview}</p>
+                <h1>{popular[0].title}</h1>
+                <p>{popular[0].overview}</p>
               </div>
             </React.Fragment>
           ) : (
